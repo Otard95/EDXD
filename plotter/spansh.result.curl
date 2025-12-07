@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+curl "https://www.spansh.co.uk/api/results/$1" \
+  --compressed \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.5' \
+  -H 'Accept-Encoding: gzip, deflate, br, zstd' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'Sec-GPC: 1' \
+  -H 'Connection: keep-alive' \
+  -H 'Referer: https://www.spansh.co.uk/exact-plotter/results/54BCB86A-D333-11F0-9B32-B824DB3886A0' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="142", "Google Chrome";v="142"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'TE: trailers'

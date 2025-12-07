@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+declare -A params
+
+# Goal
+params["source"]="Hypio+Bluae+BA-Q+d5-2793"
+params["destination"]="Beagle+Point"
+
+# Routing options
+params["is_supercharged"]="0"
+params["use_supercharge"]="1"
+params["use_injections"]="0"
+params["exclude_secondary"]="0"
+params["refuel_every_scoopable"]="0"
+params["max_time"]="60"
+params["cargo"]="0"
+params["algorithm"]="optimistic"
+
+# Resolved from loadout and spansh data
+params["optimal_mass"]="1894.099976"
+params["max_fuel_per_jump"]="5.2"
+params["fuel_multiplier"]="0.013"
+params["fuel_power"]="2.45"
+params["tank_size"]="16.0"
+params["base_mass"]="301.350006"
+params["range_boost"]="10.5"
+params["internal_tank_size"]="0.5"
+params["supercharge_multiplier"]="4"
+
+# params["reserve_size"]="0" # Can't figure out
+# params["injection_multiplier"]="2" # Is always 2 for premium I guess we could look at materials or possible synth
+
+body=""
+for key in ${!params[@]}; do
+    body="${body}&${key}=${params[${key}]}"
+done
+
+curl 'https://www.spansh.co.uk/api/generic/route' \
+  -X POST \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.5' \
+  -H 'Accept-Encoding: gzip, deflate, br, zstd' \
+  -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'Origin: https://www.spansh.co.uk' \
+  -H 'Sec-GPC: 1' \
+  -H 'Connection: keep-alive' \
+  -H 'Referer: https://www.spansh.co.uk/exact-plotter/results/AA2E78A0-D2CB-11F0-A771-AF4E48921086' \
+  -H 'Cookie: mojolicious=eyJjdXN0b20iOnsicmVkaXJlY3QiOjEsInJlZGlyZWN0X3VybCI6IlwvZXhhY3QtcGxvdHRlclwvcmVzdWx0c1wvNkUzN0I5ODgtQzZGQS0xMUYwLUE4MjktRTRDMUYxMzlDRDVCIiwic3RhdGUiOiI4b2VScjRpR3BzVmR4UkpweURSdWlKa0M1c1FDQmROcm90WDdXdWY2MXdjIn0sImV4cGlyZXMiOjE3Njc2Nzk3NzR9--79e9a13cad55144fb6d041df7afc488249622d47efea76910db773be5c68d62c' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="142", "Google Chrome";v="142"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'Priority: u=0' \
+  -H 'TE: trailers' \
+  --data-raw "${body:1}"

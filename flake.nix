@@ -15,6 +15,8 @@
       in {
         devShells.default = pkgs.mkShell {
           buildInputs = [
+            python
+
             # Wayland / GTK stack
             pkgs.wayland
             pkgs.libxkbcommon
