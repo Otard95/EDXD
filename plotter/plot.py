@@ -53,7 +53,7 @@ fuelMultiplier = std_fsd.get("fuelmul")
 fuelPower = std_fsd.get("fuelpower")
 tankSize = loadout.get("FuelCapacity").get("Main")
 reservoirSize = loadout.get("FuelCapacity").get("Reserve")
-baseMass = loadout.get("UnladenMass") + reservoirSize;
+baseMass = loadout.get("UnladenMass") + tankSize + reservoirSize;
 rangeBoost = std_fsd_booster.get("jumpboost")
 
 print(f"params[\"optimal_mass\"]=\"{optimalMass}\"")
